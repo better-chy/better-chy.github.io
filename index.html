@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="程泓渊的个人网站：机器人工程、ROS 2、嵌入式开发与项目经历。">
+  <meta name="theme-color" content="#102c36">
+  <title>程泓渊｜机器人工程与机器人开发</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #102c36;
+      --muted: #5c7076;
+      --accent: #087f70;
+      --accent-dark: #076658;
+      --paper: #f5f8f7;
+      --line: #dbe6e3;
+      --white: #fff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", system-ui, sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid #e7b865; outline-offset: 4px; border-radius: 4px; }
+    .container { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+
+    .site-header { background: var(--ink); color: var(--white); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
+    .brand { font-size: 19px; font-weight: 800; letter-spacing: .04em; }
+    .brand span { color: #71d3b9; }
+    .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 14px; }
+    .nav-links a { color: #d5e5e5; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+      align-items: center;
+      gap: clamp(32px, 6vw, 82px);
+      padding: 72px 0 88px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #a9eee0;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 26px; height: 2px; background: #a9eee0; }
+    .hero h1 { margin: 20px 0 18px; font-size: clamp(44px, 6vw, 78px); line-height: 1.15; letter-spacing: -.045em; }
+    .hero h1 span { color: #8ee0c9; }
+    .hero-lead { max-width: 640px; margin: 0; color: #d6e5e5; font-size: clamp(17px, 2vw, 20px); line-height: 1.9; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 34px; padding: 0; list-style: none; }
+    .hero-tags li { border: 1px solid #44636b; border-radius: 100px; padding: 5px 13px; color: #d8e9e8; font-size: 13px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 45px; padding: 9px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: #8ee0c9; color: #0b3034; }
+    .button-primary:hover { background: #b0eedb; }
+    .button-outline { border: 1px solid #69858b; color: white; }
+    .button-outline:hover { background: #254751; }
+    .portrait-frame { position: relative; width: min(100%, 350px); justify-self: end; margin: 0; }
+    .portrait-frame::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid #5fae9e; border-radius: 18px; }
+    .portrait-frame img { position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 18px; background: #e9e3dc; }
+    .portrait-frame figcaption { position: absolute; left: -18px; bottom: 20px; padding: 6px 12px; border-radius: 5px; background: #fff; color: var(--ink); font-size: 12px; font-weight: 700; box-shadow: 0 8px 24px #0019; }
+
+    main { padding-bottom: 70px; }
+    .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; margin-top: -33px; border: 1px solid var(--line); border-radius: 14px; background: var(--line); box-shadow: 0 14px 35px #102c360b; }
+    .highlight { background: #fff; padding: 26px 30px; }
+    .highlight strong { display: block; color: var(--accent); font-size: 26px; line-height: 1.25; }
+    .highlight span { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; }
+    .section { padding-top: 86px; scroll-margin-top: 24px; }
+    .section-top { margin-bottom: 30px; }
+    .section-kicker { margin: 0 0 8px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(27px, 3vw, 36px); line-height: 1.35; letter-spacing: -.025em; }
+    .section-intro { max-width: 700px; margin: 12px 0 0; color: var(--muted); }
+    .skill-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .skill-card, .project-card, .education-card, .aside-card { border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+    .skill-card { padding: 27px 30px; }
+    .skill-card h3 { margin: 0 0 8px; font-size: 17px; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .skill-index { display: block; margin-bottom: 14px; color: var(--accent); font-size: 12px; font-weight: 800; }
+
+    .project-list { display: grid; gap: 17px; }
+    .project-card { padding: 30px 34px; }
+    .project-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; align-items: start; margin-bottom: 18px; }
+    .project-card h3 { margin: 0 0 4px; font-size: 21px; }
+    .project-role { color: var(--accent); font-size: 14px; font-weight: 700; }
+    .project-date { color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .project-card ul { margin: 0 0 16px; padding-left: 1.2em; color: #344b52; font-size: 14px; }
+    .project-card li + li { margin-top: 7px; }
+    .project-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-dark); font-size: 14px; font-weight: 800; }
+    .project-link:hover { text-decoration: underline; }
+    .award { display: inline-block; margin-bottom: 13px; padding: 3px 10px; border-radius: 5px; background: #fff2d8; color: #825516; font-size: 12px; font-weight: 800; }
+
+    .education-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(240px, .75fr); gap: 17px; }
+    .education-card, .aside-card { padding: 30px 34px; }
+    .education-title { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; }
+    .education-title h3 { margin: 0; font-size: 21px; }
+    .education-title time { color: var(--muted); font-size: 13px; }
+    .education-major { margin: 6px 0 18px; color: var(--accent); font-weight: 700; }
+    .education-card p, .aside-card p { margin: 0 0 12px; color: #344b52; font-size: 14px; }
+    .education-card p:last-child, .aside-card p:last-child { margin-bottom: 0; }
+    .aside-card h3 { margin: 0 0 13px; font-size: 18px; }
+    .aside-card strong { color: var(--accent); }
+    .contact-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; margin-top: 86px; padding: 34px 38px; border-radius: 16px; background: var(--ink); color: #fff; }
+    .contact-card h2 { font-size: 25px; }
+    .contact-card p { margin: 5px 0 0; color: #c5dada; font-size: 14px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .site-footer { padding: 0 0 30px; color: var(--muted); font-size: 12px; text-align: center; }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 560px); }
+      .nav { align-items: flex-start; flex-direction: column; justify-content: center; gap: 7px; padding: 14px 0; }
+      .nav-links { gap: 16px; }
+      .hero { grid-template-columns: 1fr; padding: 48px 0 70px; }
+      .portrait-frame { width: min(250px, 75%); justify-self: start; margin-left: 14px; }
+      .highlights { grid-template-columns: 1fr; margin-top: -24px; }
+      .highlight { padding: 18px 22px; }
+      .section { padding-top: 62px; }
+      .skill-grid, .education-grid { grid-template-columns: 1fr; }
+      .project-card, .education-card, .aside-card { padding: 24px; }
+      .contact-card { margin-top: 62px; padding: 27px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="#top">程泓渊<span>.</span></a>
+        <div class="nav-links">
+          <a href="#skills">专业技能</a>
+          <a href="#projects">项目经历</a>
+          <a href="#education">教育经历</a>
+          <a href="#contact">联系我</a>
+        </div>
+      </nav>
+      <div class="hero" id="top">
+        <div>
+          <span class="eyebrow">Robotics · Embedded Systems</span>
+          <h1>你好，我是<br><span>程泓渊。</span></h1>
+          <p class="hero-lead">宁波工程学院机器人工程专业学生，专注机器人系统开发、嵌入式控制与机械设计。喜欢把算法、硬件和结构设计连接起来，解决真实的工程问题。</p>
+          <ul class="hero-tags" aria-label="主要技能">
+            <li>ROS 2</li><li>STM32</li><li>C / C++</li><li>Python</li><li>PID 控制</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">查看项目经历 ↓</a>
+            <a class="button button-outline" href="https://github.com/better-chy" target="_blank" rel="noopener noreferrer">访问 GitHub ↗</a>
+          </div>
+        </div>
+        <figure class="portrait-frame">
+          <img src="portrait.png" alt="程泓渊的个人照片" width="900" height="1200">
+          <figcaption>机器人开发 / 宁波</figcaption>
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="highlights" aria-label="经历概览">
+      <div class="highlight"><strong>国家级二等奖</strong><span>ROBOCON「沙排之王」赛项</span></div>
+      <div class="highlight"><strong>6 项</strong><span>累计获得的国家级奖项</span></div>
+      <div class="highlight"><strong>3 个</strong><span>代表项目：机器人、机械与电控</span></div>
+    </div>
+
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="section-top">
+        <p class="section-kicker">01 / Expertise</p>
+        <h2 id="skills-title">专业技能</h2>
+        <p class="section-intro">围绕机器人开发，覆盖软件、硬件、控制和工程协作。</p>
+      </div>
+      <div class="skill-grid">
+        <article class="skill-card"><span class="skill-index">01</span><h3>机器人系统</h3><p>熟悉 ROS 2，通过 Topic、Service 实现节点通信，具备机器人系统开发经验。</p></article>
+        <article class="skill-card"><span class="skill-index">02</span><h3>编程与嵌入式</h3><p>熟悉 Python、C/C++；掌握 STM32 开发，了解 GPIO、USART、CAN、I²C、SPI、PWM、DMA 与中断的配置和调试。</p></article>
+        <article class="skill-card"><span class="skill-index">03</span><h3>控制与通信</h3><p>掌握 PID 控制，具备电机驱动、底盘控制、多传感器数据融合及设备联调经验。</p></article>
+        <article class="skill-card"><span class="skill-index">04</span><h3>开发与协作</h3><p>使用 Git、GitHub、CMake、Keil 5、STM32CubeMX 等工具；熟练使用 Codex 等 AI 编程 Agent 辅助需求拆解、代码编写与调试。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="section-top">
+        <p class="section-kicker">02 / Selected Work</p>
+        <h2 id="projects-title">项目经历</h2>
+        <p class="section-intro">从整车控制到机械结构和电控设计，在团队项目中承担不同角色。</p>
+      </div>
+      <div class="project-list">
+        <article class="project-card">
+          <div class="project-heading">
+            <div><h3>ROBOCON 沙排之王</h3><span class="project-role">队长 · 整车控制系统</span></div>
+            <time class="project-date">2025/11 - 2026/07</time>
+          </div>
+          <span class="award">国家级二等奖</span>
+          <ul>
+            <li>带领团队参加 ROBOCON「沙排之王」赛项，获得国家级二等奖。</li>
+            <li>基于 ROS 2 Humble 与 RDK X5 开发全向轮接球机器人的整车控制系统，实现全向轮运动学解算。</li>
+            <li>使用 C++ 封装 SocketCAN 电机通信与运动控制模块，统一驱动 8 台达妙 DM 系列电机。</li>
+          </ul>
+          <a class="project-link" href="https://github.com/better-chy/ROBOCON_Volleyball_Robot" target="_blank" rel="noopener noreferrer">查看项目代码 ↗</a>
+        </article>
+        <article class="project-card">
+          <div class="project-heading">
+            <div><h3>自主对抗车</h3><span class="project-role">机械设计负责人</span></div>
+            <time class="project-date">2026/02 - 2026/06</time>
+          </div>
+          <ul>
+            <li>负责底盘与传动系统方案选型，使用 SolidWorks 完成零件建模和整车装配体设计。</li>
+            <li>设计传感器支架、防护外壳等结构；参与装配调试，排查机械干涉与传动问题。</li>
+          </ul>
+          <a class="project-link" href="https://github.com/better-chy/CombatCar_2026" target="_blank" rel="noopener noreferrer">查看项目代码 ↗</a>
+        </article>
+        <article class="project-card">
+          <div class="project-heading">
+            <div><h3>平衡车</h3><span class="project-role">电控设计负责人</span></div>
+            <time class="project-date">2026/03 - 2026/07</time>
+          </div>
+          <ul>
+            <li>基于 STM32 搭建主控与电机驱动电路，完成 MPU6050 姿态数据采集。</li>
+            <li>使用 PID 闭环控制实现车身直立平衡，以及速度、转向调节。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="section-top">
+        <p class="section-kicker">03 / Background</p>
+        <h2 id="education-title">教育与探索</h2>
+      </div>
+      <div class="education-grid">
+        <article class="education-card">
+          <div class="education-title"><h3>宁波工程学院</h3><time>2024/09 - 至今</time></div>
+          <p class="education-major">卓越工程师学院 · 机器人工程</p>
+          <p>入选卓越工程师学院与校双创实验室，参与创新创业项目及竞赛，累计获得 6 项国家级奖项。</p>
+          <p><strong>主修课程：</strong>机器人学、自动控制原理、机械设计基础、电路与电子技术、单片机原理与应用、嵌入式系统、传感器与检测技术、数据结构与算法。</p>
+        </article>
+        <aside class="aside-card">
+          <h3>技术之外</h3>
+          <p>持续关注前沿 AI 工具与应用，运营抖音账号 <strong>QY.C_</strong>，定期发布 AI 资讯分享。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="contact-card" id="contact" aria-labelledby="contact-title">
+      <div><h2 id="contact-title">期待与你交流</h2><p>欢迎讨论机器人项目、工程实践与合作机会。</p></div>
+      <div class="contact-links">
+        <a class="button button-primary" href="mailto:917751286@qq.com">发送邮件 ↗</a>
+        <a class="button button-outline" href="https://github.com/better-chy" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">© 2026 程泓渊 · 由 GitHub Pages 托管</footer>
+</body>
+</html>
