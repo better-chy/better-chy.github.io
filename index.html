@@ -32,7 +32,7 @@
     a:focus-visible { outline: 3px solid #e7b865; outline-offset: 4px; border-radius: 4px; }
     .container { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
 
-    .site-header { background: var(--ink); color: var(--white); }
+    .site-header { background: radial-gradient(circle at 85% 55%, #1c4850 0, transparent 38%), var(--ink); color: var(--white); }
     .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
     .brand { font-size: 19px; font-weight: 800; letter-spacing: .04em; }
     .brand span { color: #71d3b9; }
@@ -40,13 +40,8 @@
     .nav-links a { color: #d5e5e5; }
     .nav-links a:hover { color: #fff; }
 
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
-      align-items: center;
-      gap: clamp(32px, 6vw, 82px);
-      padding: 72px 0 88px;
-    }
+    .hero { display: flex; align-items: center; justify-content: center; min-height: 510px; padding: 72px 0 100px; text-align: center; }
+    .hero > div { max-width: 800px; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -60,20 +55,16 @@
     .eyebrow::before { content: ""; width: 26px; height: 2px; background: #a9eee0; }
     .hero h1 { margin: 20px 0 18px; font-size: clamp(44px, 6vw, 78px); line-height: 1.15; letter-spacing: -.045em; }
     .hero h1 span { color: #8ee0c9; }
-    .hero-lead { max-width: 640px; margin: 0; color: #d6e5e5; font-size: clamp(17px, 2vw, 20px); line-height: 1.9; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 34px; padding: 0; list-style: none; }
+    .hero-lead { max-width: 640px; margin: 0 auto; color: #d6e5e5; font-size: clamp(17px, 2vw, 20px); line-height: 1.9; }
+    .hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 26px 0 34px; padding: 0; list-style: none; }
     .hero-tags li { border: 1px solid #44636b; border-radius: 100px; padding: 5px 13px; color: #d8e9e8; font-size: 13px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .button { display: inline-flex; align-items: center; justify-content: center; min-height: 45px; padding: 9px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; transition: transform .2s ease, background .2s ease; }
     .button:hover { transform: translateY(-2px); }
     .button-primary { background: #8ee0c9; color: #0b3034; }
     .button-primary:hover { background: #b0eedb; }
     .button-outline { border: 1px solid #69858b; color: white; }
     .button-outline:hover { background: #254751; }
-    .portrait-frame { position: relative; width: min(100%, 350px); justify-self: end; margin: 0; }
-    .portrait-frame::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid #5fae9e; border-radius: 18px; }
-    .portrait-frame img { position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 18px; background: #e9e3dc; }
-    .portrait-frame figcaption { position: absolute; left: -18px; bottom: 20px; padding: 6px 12px; border-radius: 5px; background: #fff; color: var(--ink); font-size: 12px; font-weight: 700; box-shadow: 0 8px 24px #0019; }
 
     main { padding-bottom: 70px; }
     .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; margin-top: -33px; border: 1px solid var(--line); border-radius: 14px; background: var(--line); box-shadow: 0 14px 35px #102c360b; }
@@ -124,8 +115,7 @@
       .container { width: min(100% - 32px, 560px); }
       .nav { align-items: flex-start; flex-direction: column; justify-content: center; gap: 7px; padding: 14px 0; }
       .nav-links { gap: 16px; }
-      .hero { grid-template-columns: 1fr; padding: 48px 0 70px; }
-      .portrait-frame { width: min(250px, 75%); justify-self: start; margin-left: 14px; }
+      .hero { min-height: 470px; padding: 52px 0 76px; }
       .highlights { grid-template-columns: 1fr; margin-top: -24px; }
       .highlight { padding: 18px 22px; }
       .section { padding-top: 62px; }
@@ -164,10 +154,6 @@
             <a class="button button-outline" href="https://github.com/better-chy" target="_blank" rel="noopener noreferrer">访问 GitHub ↗</a>
           </div>
         </div>
-        <figure class="portrait-frame">
-          <img src="portrait.png" alt="程泓渊的个人照片" width="900" height="1200">
-          <figcaption>机器人开发 / 宁波</figcaption>
-        </figure>
       </div>
     </div>
   </header>
